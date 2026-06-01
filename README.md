@@ -145,3 +145,23 @@ python cli.py --symbol INVALID_SYM --side BUY --type MARKET --quantity 1.0
 2. **Time In Force**: LIMIT orders default to `GTC` (Good 'Til Cancelled). This is standard for futures limit trading.
 3. **Precision and Minimums**: Different futures pairs on Binance have specific step-sizes, decimal precision, and minimum order values (e.g., BTCUSDT minimum is typically 0.001 BTC). If you supply a quantity too small or with too many decimals, the Binance API will reject the request. The bot gracefully catches and displays these Binance API exceptions.
 4. **Enhanced CLI UX (Bonus)**: Built using the `rich` library, providing a beautiful visual layout, color-coded success/failure cards, animated spinner states, and automated indentation formatting for JSON API logs on-screen.
+5. **Lightweight Web UI (Bonus)**: Built using **Streamlit**, providing a fully interactive, responsive web dashboard to monitor balance status, configure keys, execute orders, toggle JSON API payloads, and view real-time log activity on-screen.
+
+---
+
+## Running the Web UI (Bonus)
+
+To launch the interactive web dashboard:
+
+1. Install the updated requirements:
+   ```bash
+   pip install -r requirements.txt
+   ```
+2. Launch the Streamlit dashboard:
+   ```bash
+   streamlit run ui.py
+   ```
+3. The dashboard will automatically open in your default browser at `http://localhost:8501`. 
+4. In the sidebar, you can configure your Testnet API Key and Secret (it will load your `.env` values by default if present).
+5. Fill out the order form and click **Execute Order** to trade directly on the testnet!
+
