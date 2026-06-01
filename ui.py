@@ -54,8 +54,17 @@ st.sidebar.markdown("### 🔑 API Configuration")
 api_key_env = os.getenv("BINANCE_API_KEY", "")
 api_secret_env = os.getenv("BINANCE_API_SECRET", "")
 
-api_key = st.sidebar.text_input("Binance API Key", value=api_key_env, type="password")
-api_secret = st.sidebar.text_input("Binance API Secret", value=api_secret_env, type="password")
+if api_key_env and api_secret_env:
+    st.sidebar.success("✅ API Keys loaded from .env")
+    st.sidebar.markdown("*(Optional) Override keys:*")
+else:
+    st.sidebar.markdown("*(Required) Enter API keys:*")
+
+ui_api_key = st.sidebar.text_input("Binance API Key", value="", type="password")
+ui_api_secret = st.sidebar.text_input("Binance API Secret", value="", type="password")
+
+api_key = ui_api_key if ui_api_key else api_key_env
+api_secret = ui_api_secret if ui_api_secret else api_secret_env
 
 st.sidebar.markdown("---")
 st.sidebar.markdown("### ℹ️ Environment Info")
